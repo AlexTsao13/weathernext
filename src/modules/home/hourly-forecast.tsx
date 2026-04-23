@@ -29,8 +29,6 @@ type EventItem = {
   label: string;
 };
 
-type ForecastDisplayItem = HourData | EventItem;
-
 const HourlyForecast = ({ weather }: { weather: ForecastWeather }) => {
   const forecast = weather.forecast; // 暫時轉型為 any
   const today = forecast.forecastday[0];
@@ -91,11 +89,7 @@ const HourlyForecast = ({ weather }: { weather: ForecastWeather }) => {
       isEvent: true,
       label: event.label,
     };
-    // if (index === -1) {
-    //   combined.push(eventObj);
-    // } else {
-    //   combined.splice(index, 0, eventObj);
-    // }
+
     if (index !== -1 && index !== 0) {
       combined.splice(index, 0, eventObj);
     }
