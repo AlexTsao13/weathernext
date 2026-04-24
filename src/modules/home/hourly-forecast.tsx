@@ -42,11 +42,6 @@ const HourlyForecast = ({ weather }: { weather: ForecastWeather }) => {
   const next24Hours = futureHours.slice(0, 24);
 
   // 建立一個插入的時間事件陣列（日出日落）
-  type EventItem = {
-    time: string;
-    isEvent: true;
-    label: string;
-  };
   const events: EventItem[] = [];
 
   const addEvent = (timeString: string, label: string) => {
@@ -77,11 +72,10 @@ const HourlyForecast = ({ weather }: { weather: ForecastWeather }) => {
     addEvent(sunset, "日落");
   }
 
-  console.log(events);
   // 將日出日落插入正確位置
   type ForecastDisplayItem = HourData | EventItem;
   const combined: ForecastDisplayItem[] = [...next24Hours];
-  console.log(combined);
+
   events.forEach((event) => {
     const index = combined.findIndex((h) => h.time > event.time);
     const eventObj: EventItem = {

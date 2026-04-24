@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 type ForecastDay = {
   date: string;
@@ -22,6 +26,8 @@ type DailyForecastProps = {
 };
 
 const DailyForecast = ({ weather }: DailyForecastProps) => {
+  const searchParams = useSearchParams();
+  const city = searchParams.get("city") || "";
   const forecast = weather?.forecast;
   const forecastDays = forecast?.forecastday || [];
 
@@ -48,7 +54,12 @@ const DailyForecast = ({ weather }: DailyForecastProps) => {
     const width = ((max - min) / range) * 100 || 100;
 
     return (
-      <div key={day.date}>
+      <Link
+        key={day.date}
+        href={`/forecast/${day.date}?city=${encodeURIComponent(city)}`}
+        className="block hover:bg-white/5 rounded-xl transition-colors duration-200 cursor-pointer"
+        id={`forecast-link-${day.date}`}
+      >
         {/* 間隔線 */}
         <hr className="border-white/20" />
         {/* 單日預報區塊 */}
@@ -107,8 +118,13 @@ const DailyForecast = ({ weather }: DailyForecastProps) => {
               {max}°C
             </p>
           </div>
+
+          {/* 箭頭指示器 */}
+          <svg className="w-4 h-4 text-white/30 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
         </div>
-      </div>
+      </Link>
     );
   });
 
