@@ -6,8 +6,8 @@ type AstroCardProps = {
 
 const AstroCard = ({ astro }: AstroCardProps) => {
   return (
-    <div className="bg-white/10 backdrop-blur-md rounded-2xl p-5 shadow-lg border border-white/5 col-span-1 sm:col-span-2">
-      <h3 className="text-white/60 text-sm font-medium mb-4 flex items-center gap-2">
+    <div className="bg-surface backdrop-blur-md rounded-2xl p-5 shadow-lg border border-surface-border col-span-1 sm:col-span-2">
+      <h3 className="text-text-secondary text-sm font-medium mb-4 flex items-center gap-2">
         <svg
           className="w-4 h-4"
           fill="none"
@@ -49,9 +49,9 @@ const AstroCard = ({ astro }: AstroCardProps) => {
           iconPath="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
         />
       </div>
-      <div className="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
-        <span className="text-sm text-white/50">月相</span>
-        <span className="text-sm text-white font-medium">
+      <div className="mt-4 pt-4 border-t border-divider flex items-center justify-between">
+        <span className="text-sm text-text-tertiary">月相</span>
+        <span className="text-sm text-text-primary font-medium">
           {astro.moon_phase}
         </span>
       </div>
@@ -99,8 +99,8 @@ function AstroItem({
         </svg>
       </div>
       <div>
-        <p className="text-xs text-white/50">{label}</p>
-        <p className="text-white font-semibold">{value}</p>
+        <p className="text-xs text-text-tertiary">{label}</p>
+        <p className="text-text-primary font-semibold">{value}</p>
       </div>
     </div>
   );

@@ -90,13 +90,13 @@ const HourlyForecast = ({ weather }: { weather: ForecastWeather }) => {
   });
 
   return (
-    <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-white shadow-lg text-center overflow-x-auto flex gap-4 scrollbar scrollbar-thumb-gray-500 scrollbar-track-transparent">
+    <div className="bg-surface backdrop-blur-md rounded-xl p-6 text-text-primary shadow-lg text-center overflow-x-auto flex gap-4 border border-surface-border scrollbar scrollbar-thumb-gray-500 scrollbar-track-transparent">
       {combined.map((item, index) => (
         <div
           key={index}
           className="min-w-[80px] flex flex-col items-center space-y-1"
         >
-          <p className="text-sm">{item.time.slice(-5)}</p>
+          <p className="text-sm text-text-secondary">{item.time.slice(-5)}</p>
           {"isEvent" in item ? (
             <>
               {item.label === "日出" ? <SunriseIcon /> : <SunsetIcon />}

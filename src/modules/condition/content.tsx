@@ -21,8 +21,8 @@ const ConditionContent = () => {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-4 border-white/20 border-t-white rounded-full animate-spin" />
-          <p className="text-white/60 text-lg">載入天氣資料中...</p>
+          <div className="w-12 h-12 border-4 border-spinner-border border-t-spinner-active rounded-full animate-spin" />
+          <p className="text-text-tertiary text-lg">載入天氣資料中...</p>
         </div>
       </div>
     );
@@ -33,10 +33,10 @@ const ConditionContent = () => {
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="bg-red-500/10 backdrop-blur-md rounded-2xl p-8 text-center border border-red-500/20">
           <p className="text-red-400 text-lg font-semibold">無法載入天氣資料</p>
-          <p className="text-white/50 mt-2">請稍後再試</p>
+          <p className="text-text-tertiary mt-2">請稍後再試</p>
           <Link
             href={`/?city=${city}`}
-            className="inline-block mt-4 px-6 py-2 bg-white/10 rounded-full text-white hover:bg-white/20 transition-colors"
+            className="inline-block mt-4 px-6 py-2 bg-surface rounded-full text-text-primary hover:bg-surface-active transition-colors"
           >
             返回首頁
           </Link>
@@ -51,11 +51,11 @@ const ConditionContent = () => {
   if (!targetDay) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center border border-white/10">
-          <p className="text-white text-lg font-semibold">找不到該日期的預報</p>
+        <div className="bg-surface backdrop-blur-md rounded-2xl p-8 text-center border border-surface-border">
+          <p className="text-text-primary text-lg font-semibold">找不到該日期的預報</p>
           <Link
             href={`/?city=${city}`}
-            className="inline-block mt-4 px-6 py-2 bg-white/10 rounded-full text-white hover:bg-white/20 transition-colors"
+            className="inline-block mt-4 px-6 py-2 bg-surface rounded-full text-text-primary hover:bg-surface-active transition-colors"
           >
             返回首頁
           </Link>
@@ -67,12 +67,12 @@ const ConditionContent = () => {
   const { day, astro, hour } = targetDay;
 
   return (
-    <div className="text-white space-y-6 animate-[fadeIn_0.5s_ease-out]">
+    <div className="text-text-primary space-y-6 animate-[fadeIn_0.5s_ease-out]">
       {/* 返回按鈕 */}
       <div className="flex items-center gap-4">
         <Link
           href={`/?city=${city}`}
-          className="flex items-center gap-1 text-white/60 hover:text-white transition-colors group"
+          className="flex items-center gap-1 text-text-secondary hover:text-text-primary transition-colors group"
           id="back-to-home"
         >
           <svg

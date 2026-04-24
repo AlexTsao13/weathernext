@@ -26,13 +26,13 @@ const SearchComponent = () => {
   return (
     <div className="w-full max-w-md mx-auto my-10 rounded-lg">
       {/* Search Input */}
-      <div className="flex items-center border border-gray-500 rounded-lg overflow-hidden bg-white">
+      <div className="flex items-center border border-surface-border-hover rounded-lg overflow-hidden bg-input-bg">
         <input
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
           type="text"
           name="search"
-          className="flex-1 px-4 py-2 outline-none text-gray-800"
+          className="flex-1 px-4 py-2 outline-none text-input-text bg-transparent"
           placeholder="enter city name..."
         />
         <button

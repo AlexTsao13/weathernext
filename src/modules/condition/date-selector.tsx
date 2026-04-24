@@ -25,7 +25,7 @@ const DateSelector = ({
   city,
 }: DateSelectorProps) => {
   return (
-    <div className="bg-white/10 backdrop-blur-md rounded-2xl p-3 shadow-lg border border-white/5">
+    <div className="bg-surface backdrop-blur-md rounded-2xl p-3 shadow-lg border border-surface-border">
       <div className="flex gap-2">
         {forecastDays.map((fd, index) => {
           const isActive = fd.date === currentDate;
@@ -43,21 +43,21 @@ const DateSelector = ({
                 transition-all duration-300 relative
                 ${
                   isActive
-                    ? "bg-white/20 shadow-md border border-white/15"
-                    : "hover:bg-white/8 border border-transparent"
+                    ? "bg-surface-active shadow-md border border-surface-border-hover"
+                    : "hover:bg-surface-hover border border-transparent"
                 }
               `}
             >
               {/* 星期 */}
               <span
-                className={`text-xs font-semibold ${isActive ? "text-white" : "text-white/50"}`}
+                className={`text-xs font-semibold ${isActive ? "text-text-primary" : "text-text-tertiary"}`}
               >
                 {formatShortDate(fd.date, index)}
               </span>
 
               {/* 日期 */}
               <span
-                className={`text-[10px] ${isActive ? "text-white/70" : "text-white/30"}`}
+                className={`text-[10px] ${isActive ? "text-text-secondary" : "text-text-muted"}`}
               >
                 {formatDayMonth(fd.date)}
               </span>
@@ -72,17 +72,17 @@ const DateSelector = ({
 
               {/* 溫度範圍 */}
               <div className="flex gap-1 text-[11px]">
-                <span className={isActive ? "text-white" : "text-white/50"}>
+                <span className={isActive ? "text-text-primary" : "text-text-tertiary"}>
                   {fd.day.maxtemp_c}°
                 </span>
-                <span className={isActive ? "text-white/50" : "text-white/30"}>
+                <span className={isActive ? "text-text-tertiary" : "text-text-muted"}>
                   {fd.day.mintemp_c}°
                 </span>
               </div>
 
               {/* 選中指示器 */}
               {isActive && (
-                <div className="absolute bottom-1 w-5 h-0.5 rounded-full bg-white/60" />
+                <div className="absolute bottom-1 w-5 h-0.5 rounded-full bg-indicator" />
               )}
             </Link>
           );

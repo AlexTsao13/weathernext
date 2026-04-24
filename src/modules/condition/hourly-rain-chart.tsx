@@ -40,8 +40,8 @@ const HourlyRainChart = ({ hours }: HourlyRainChartProps) => {
   const yTicks = [0, 25, 50, 75, 100];
 
   return (
-    <div className="bg-white/10 backdrop-blur-md rounded-2xl p-5 shadow-lg border border-white/5">
-      <h3 className="text-white/60 text-sm font-medium mb-4 flex items-center gap-2">
+    <div className="bg-surface backdrop-blur-md rounded-2xl p-5 shadow-lg border border-surface-border">
+      <h3 className="text-text-secondary text-sm font-medium mb-4 flex items-center gap-2">
         <svg
           className="w-4 h-4"
           fill="none"
@@ -86,13 +86,13 @@ const HourlyRainChart = ({ hours }: HourlyRainChartProps) => {
                 y1={getY(tick)}
                 x2={totalWidth}
                 y2={getY(tick)}
-                stroke="rgba(255,255,255,0.06)"
+                stroke="var(--chart-grid)"
                 strokeDasharray="4 4"
               />
               <text
                 x={4}
                 y={getY(tick) - 4}
-                fill="rgba(255,255,255,0.25)"
+                fill="var(--chart-label)"
                 fontSize={9}
               >
                 {tick}%
@@ -121,7 +121,7 @@ const HourlyRainChart = ({ hours }: HourlyRainChartProps) => {
                 cx={p.x}
                 cy={p.y}
                 r={3.5}
-                fill="#0f172a"
+                fill="var(--chart-dot-fill)"
                 stroke="#38bdf8"
                 strokeWidth={2}
               />
@@ -132,7 +132,7 @@ const HourlyRainChart = ({ hours }: HourlyRainChartProps) => {
                   x={p.x}
                   y={p.y - 8}
                   textAnchor="middle"
-                  fill="rgba(255,255,255,0.6)"
+                  fill="var(--chart-value)"
                   fontSize={10}
                   fontWeight={500}
                 >
@@ -145,7 +145,7 @@ const HourlyRainChart = ({ hours }: HourlyRainChartProps) => {
                 x={p.x}
                 y={CHART_HEIGHT - 6}
                 textAnchor="middle"
-                fill="rgba(255,255,255,0.35)"
+                fill="var(--chart-label)"
                 fontSize={10}
               >
                 {p.hour}

@@ -57,11 +57,11 @@ const DailyForecast = ({ weather }: DailyForecastProps) => {
       <Link
         key={day.date}
         href={`/forecast/${day.date}?city=${encodeURIComponent(city)}`}
-        className="block hover:bg-white/5 rounded-xl transition-colors duration-200 cursor-pointer"
+        className="block hover:bg-surface-hover rounded-xl transition-colors duration-200 cursor-pointer"
         id={`forecast-link-${day.date}`}
       >
         {/* 間隔線 */}
-        <hr className="border-white/20" />
+        <hr className="border-divider" />
         {/* 單日預報區塊 */}
         <div className="flex items-center justify-evenly my-6 w-full gap-4 h-10">
           {/* 日期文字區塊 */}
@@ -91,7 +91,7 @@ const DailyForecast = ({ weather }: DailyForecastProps) => {
             </p>
 
             {/* 溫度條容器 */}
-            <div className="w-full h-[10%] bg-gray-300 rounded-full relative flex-2">
+            <div className="w-full h-[10%] bg-temp-track rounded-full relative flex-2">
               {/* 白色背景條，代表當日溫度範圍在整體中的位置 */}
               <div
                 className="h-full rounded-full bg-white overflow-hidden"
@@ -120,7 +120,7 @@ const DailyForecast = ({ weather }: DailyForecastProps) => {
           </div>
 
           {/* 箭頭指示器 */}
-          <svg className="w-4 h-4 text-white/30 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-4 h-4 text-text-muted flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </div>
@@ -130,7 +130,7 @@ const DailyForecast = ({ weather }: DailyForecastProps) => {
 
   // 最終畫面結構
   return (
-    <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 text-white shadow-lg text-center overflow-x-auto flex flex-col mt-8 scrollbar scrollbar-thin scrollbar-thumb-indigo-500 scrollbar-track-transparent w-full mx-auto">
+    <div className="bg-surface backdrop-blur-md rounded-xl p-4 text-text-primary shadow-lg text-center overflow-x-auto flex flex-col mt-8 border border-surface-border scrollbar scrollbar-thin scrollbar-thumb-indigo-500 scrollbar-track-transparent w-full mx-auto">
       <p className="text-xl font-semibold mb-2">3天天氣預報</p>
       <div className="flex flex-col">{forecastItems}</div>
     </div>
