@@ -6,7 +6,7 @@ type AstroCardProps = {
 
 const AstroCard = ({ astro }: AstroCardProps) => {
   return (
-    <div className="bg-surface backdrop-blur-md rounded-2xl p-5 shadow-lg border border-surface-border col-span-1 sm:col-span-2">
+    <div className="bg-surface backdrop-blur-md rounded-2xl p-5 shadow-lg border border-surface-border col-span-2 hover:border-surface-border-hover transition-all duration-300 hover:scale-[1.01]">
       <h3 className="text-text-secondary text-sm font-medium mb-4 flex items-center gap-2">
         <svg
           className="w-4 h-4"
@@ -23,7 +23,7 @@ const AstroCard = ({ astro }: AstroCardProps) => {
         </svg>
         天文資訊
       </h3>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         <AstroItem
           color="amber"
           label="日出"

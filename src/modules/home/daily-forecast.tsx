@@ -19,6 +19,9 @@ type ForecastDay = {
 
 type DailyForecastProps = {
   weather: {
+    current?: {
+      temp_c: number;
+    };
     forecast: {
       forecastday: ForecastDay[];
     };
@@ -71,8 +74,12 @@ const DailyForecast = ({ weather }: DailyForecastProps) => {
 
           {/* 天氣圖示區塊 */}
           <div className="items-center justify-center flex-1">
-            <Image 
-              src={day.day.condition.icon.startsWith('//') ? `https:${day.day.condition.icon}` : day.day.condition.icon} 
+            <Image
+              src={
+                day.day.condition.icon.startsWith("//")
+                  ? `https:${day.day.condition.icon}`
+                  : day.day.condition.icon
+              }
               alt={day.day.condition.text}
               width={40}
               height={40}
@@ -91,26 +98,40 @@ const DailyForecast = ({ weather }: DailyForecastProps) => {
             </p>
 
             {/* 溫度條容器 */}
-            <div className="w-full h-[10%] bg-temp-track rounded-full relative flex-2">
-              {/* 白色背景條，代表當日溫度範圍在整體中的位置 */}
-              <div
-                className="h-full rounded-full bg-white overflow-hidden"
-                style={{
-                  marginLeft: `${left}%`,
-                  width: `${width}%`,
-                }}
-              >
-                {/* 漸層顏色條，實際溫度條圖案，套用 scaleX 來保持一致比例 */}
+            <div className="w-full relative flex-2 h-1.5 group">
+              {/* 背景軌道與範圍條 */}
+              <div className="w-full h-full bg-temp-track rounded-full relative overflow-hidden">
+                {/* 當日溫度範圍條 (遮罩作用) */}
                 <div
-                  className="h-full w-full rounded-full bg-gradient-to-r from-yellow-300 to-orange-500"
+                  className="h-full absolute rounded-full overflow-hidden"
                   style={{
-                    transform: `translateX(-${
-                      (left / width) * 100
-                    }%) scaleX(${1 / (width / 100 || 1)})`,
-                    transformOrigin: "left",
+                    left: `${left}%`,
+                    width: `${Math.max(width, 2)}%`,
+                  }}
+                >
+                  {/* 漸層顏色條 */}
+                  <div
+                    className="h-full absolute bg-gradient-to-r from-yellow-400 to-red-500"
+                    style={{
+                      left: `-${(left / Math.max(width, 2)) * 100}%`,
+                      width: `${(100 / Math.max(width, 2)) * 100}%`,
+                    }}
+                  />
+                </div>
+              </div>
+
+              {/* 現在溫度指示點 (僅在「今天」顯示) */}
+              {index === 0 && weather.current && (
+                <div
+                  className="absolute top-1/2 w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 bg-white border-[1.5px] sm:border-[2px] md:border-[2.5px] border-black/80 rounded-full shadow-[0_0_4px_rgba(0,0,0,0.3)] z-10"
+                  style={{
+                    left: `${
+                      ((weather.current.temp_c - minTemp) / range) * 100
+                    }%`,
+                    transform: "translate(-50%, -50%)",
                   }}
                 />
-              </div>
+              )}
             </div>
 
             {/* 最高溫文字 */}
@@ -120,8 +141,18 @@ const DailyForecast = ({ weather }: DailyForecastProps) => {
           </div>
 
           {/* 箭頭指示器 */}
-          <svg className="w-4 h-4 text-text-muted flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          <svg
+            className="w-4 h-4 text-text-muted flex-shrink-0"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
           </svg>
         </div>
       </Link>
