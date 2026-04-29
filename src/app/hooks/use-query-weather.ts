@@ -9,7 +9,7 @@ const useQueryWeather = () => {
   return useQuery({
     queryKey: ["weather", currentCity],
     queryFn: () => getWeather(currentCity),
-    enabled: !!currentCity, // 只有有城市参数时才执行查询
+    enabled: !!currentCity, // 只有有城市參數時才執行查詢
   });
 };
 

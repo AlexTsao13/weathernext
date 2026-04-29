@@ -100,7 +100,11 @@ const ConditionContent = () => {
       />
 
       {/* 天氣概覽 */}
-      <WeatherHeader day={day} date={dateParam} />
+      <WeatherHeader 
+        day={day} 
+        date={dateParam} 
+        currentTemp={new Date().toISOString().split('T')[0] === dateParam ? weather.current.temp_c : undefined}
+      />
 
       {/* 逐時降雨折線圖 */}
       <HourlyRainChart hours={hour} />
